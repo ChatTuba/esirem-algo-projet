@@ -29,6 +29,12 @@ enum couleurs {
     Pique=4
 };
 
+void initialisation(void){
+    struct joueur banque;
+    struct joueur joueur;
+    creer_deck();
+}
+
 int main() {
     printf("Bob Bob!\n");
     return 0;
