@@ -5,6 +5,10 @@ struct carte{
     char couleur;
 };
 
+struct deck{
+    struct carte *liste;
+};
+
 struct joueur{
     /// structure pour la main des joueurs ainsi que leur montant 
     struct deck deck;
@@ -17,11 +21,6 @@ enum couleurs {
     Coeur=2,
     Trefle=3,
     Pique=4
-};
-
-
-struct deck{
-    struct carte *liste;
 };
 
 int main() {
