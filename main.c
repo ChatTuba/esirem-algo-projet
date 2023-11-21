@@ -12,8 +12,6 @@ struct joueur{
     
 };
 
-
-
 enum couleurs {
     Carreau=1,
     Coeur=2,
@@ -22,11 +20,11 @@ enum couleurs {
 };
 
 
-
-
+struct deck{
+    struct carte *liste;
+};
 
 int main() {
     printf("Bob Bob!\n");
     return 0;
 }
-
