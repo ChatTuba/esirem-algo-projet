@@ -1,4 +1,10 @@
 #include <stdio.h>
+enum choix_joueur{
+    Hit=1,
+    Stand=2,
+    Double=3,
+    Surrend=4
+};
 struct carte{
     /// cette structure définie les cartes de jeu
     int valeur;
