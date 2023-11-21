@@ -5,6 +5,13 @@ struct carte{
     char couleur;
 };
 
+struct joueur{
+    /// structure pour la main des joueurs ainsi que leur montant 
+    struct deck deck;
+    int montant;
+    
+};
+
 int main() {
     printf("Bob Bob!\n");
     return 0;
