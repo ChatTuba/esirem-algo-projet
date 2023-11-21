@@ -5,3 +5,31 @@ enum choix_joueur{
     Double=3,
     Surrend=4
 };
+struct carte{
+    /// cette structure définie les cartes de jeu
+    int valeur;
+    char couleur;
+};
+
+struct deck{
+    struct carte *liste;
+};
+
+struct joueur{
+    /// structure pour la main des joueurs ainsi que leur montant 
+    struct deck deck;
+    int montant;
+    
+};
+
+enum couleurs {
+    Carreau=1,
+    Coeur=2,
+    Trefle=3,
+    Pique=4
+};
+
+int main() {
+    printf("Bob Bob!\n");
+    return 0;
+}
