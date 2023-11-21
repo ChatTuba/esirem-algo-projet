@@ -1,6 +1,12 @@
 #include <stdio.h>
-//branche 1.2 check
+struct carte{
+    /// cette structure définie les cartes de jeu
+    int valeur;
+    char couleur;
+};
+
 int main() {
     printf("Bob Bob!\n");
     return 0;
 }
+
