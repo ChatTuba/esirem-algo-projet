@@ -30,7 +30,7 @@ enum couleurs {
 };
 
 void initialisation(void){
-    struct joueur banque;
+    struct joueur banque{{{0,}},0}
     struct joueur joueur;
     creer_deck();
 }
