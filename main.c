@@ -29,7 +29,18 @@ enum couleurs {
     Pique=4
 };
 
+struct deck creer_deck(){
+    struct deck deck;
+    for(int i = 0;i < 52;i++){
+        deck.liste[i].valeur = i%13+1;
+    }
+    return deck;
+}
 int main() {
-    printf("Bob Bob!\n");
+    struct joueur joueur1;
+    struct deck deck1 = creer_deck();
+    joueur1.deck = deck1;
+
+
     return 0;
 }
