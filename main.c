@@ -17,7 +17,7 @@ struct deck{
 
 struct joueur{
     /// structure pour la main des joueurs ainsi que leur montant 
-    struct deck deck;
+    struct deck main;
     int montant;
     
 };
