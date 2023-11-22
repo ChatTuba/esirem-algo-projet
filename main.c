@@ -7,6 +7,7 @@ enum choix_joueur{
     Double=3,
     Surrend=4
 };
+
 struct carte{
     /// cette structure définie les cartes de jeu
     int valeur;
