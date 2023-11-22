@@ -1,4 +1,11 @@
 #include <stdio.h>
+enum couleurs{
+    Carreau=1,
+    Coeur=2,
+    Trefle=3,
+    Pique=4
+};
+
 enum choix_joueur{
     Hit=1,
     Stand=2,
@@ -10,8 +17,7 @@ struct carte{
     int valeur;
     char couleur;
 };
-
-struct deck{
+struct deck{// structure aussi bien pour une main que pour le deck(pioche)
     struct carte *liste;
 };
 
@@ -22,14 +28,12 @@ struct joueur{
     
 };
 
-enum couleurs {
-    Carreau=1,
-    Coeur=2,
-    Trefle=3,
-    Pique=4
-};
+
+
+
+
 
 int main() {
-    printf("Bob Bob!\n");
+    //printf("Bob Bob!\n");
     return 0;
 }
