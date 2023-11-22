@@ -1,6 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+enum couleurs {
+    Carreau=1,
+    Coeur=2,
+    Trefle=3,
+    Pique=4
+};
+enum valeur_carte{
+    As=1,
+    Deux=2,
+    Trois=3,
+    Quatre=4,
+    Cinq=5,
+    Six=6,
+    Sept=7,
+    Huit=8,
+    Neuf=9,
+    Dix=10,
+    Valet=11,
+    Dame=12,
+    Roi=13
+};
 enum choix_joueur{
     Hit=1,
     Stand=2,
@@ -9,14 +29,47 @@ enum choix_joueur{
 };
 struct carte{
     /// cette structure définie les cartes de jeu
-    int valeur;
-    char couleur;
+    enum valeur_carte valeur;
+    enum couleurs couleur;
 };
+//struct carte DC = {Dame,Carreau};
+//struct carte RP={Roi,Pique};
+//struct carte huitT={Huit,Trefle};
 
 struct deck{
     struct carte *liste;
 };
 
+
+
+//struct deck deck12 = {&DC, &RP, &huitT}; issou
+
+void afficher_carte(struct carte c){
+    if (c.valeur<=10){
+        printf("%d",c.valeur);
+    }
+    if(c.valeur==11){
+        printf("%s"," Valet");
+    }
+    if(c.valeur==12){
+        printf("%s"," Dame");
+    }
+    if(c.valeur==13){
+        printf("%s"," Roi");
+    }
+    if (c.couleur==Carreau){
+        printf("%s","Carreau");
+    }
+    if (c.couleur==Coeur){
+        printf("%s","Coeur");
+    }
+    if (c.couleur==Trefle){
+        printf("%s","Trefle");
+    }
+    if (c.couleur==Pique){
+        printf("%s","Pique");
+    }
+}
 struct joueur{
     /// structure pour la main des joueurs ainsi que leur montant 
     struct deck deck;
@@ -24,12 +77,7 @@ struct joueur{
     
 };
 
-enum couleurs {
-    Carreau=1,
-    Coeur=2,
-    Trefle=3,
-    Pique=4
-};
+
 
 struct deck creer_deck(){
     struct deck deck;
@@ -77,10 +125,11 @@ void menu_joueur(){
     }
 }
 int main() {
-    struct joueur joueur1;
-    struct deck deck1 = creer_deck();
-    joueur1.deck = deck1;
-
+    //struct joueur joueur1;
+    //struct deck deck1 = creer_deck();
+    //joueur1.deck = deck1;
+    /*for (int i=0;i<(sizeof(D.liste)/sizeof(D.liste));i++){
+        afficher_carte(D.liste[i]);*/
 
     return 0;
 }
