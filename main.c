@@ -110,6 +110,7 @@ struct deck creer_deck(){
 
 
 void initialisation(void){
+    // creaction de la main vide de la banque et du joueur
     struct joueur banque = {{{0,0}},0};
     struct joueur joueur = {{{0,0}},0};
     creer_deck();
