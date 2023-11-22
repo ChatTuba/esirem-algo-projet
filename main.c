@@ -55,6 +55,12 @@ struct deck creer_deck(){
     return deck;
 }
 
+struct carte tirage_carte(struct deck deck){
+    int random = rand()%52;
+    return deck.liste[random];
+}
+
+
 int main() {
     struct joueur joueur1;
     struct deck deck1 = creer_deck();
