@@ -58,7 +58,11 @@ struct deck creer_deck(){
 
 struct carte tirage_carte(struct deck deck){
     int random = rand()%52;
-    return deck.liste[random];
+    struct carte carte_tiree = deck.liste[random];
+    deck.liste[random].valeur = 0;
+    deck.liste[random].couleur = 0;
+
+    return carte_tiree;
 }
 
 void menu_joueur(){
