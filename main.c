@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+
+
 enum couleurs {
     Carreau=1,
     Coeur=2,
@@ -21,6 +24,7 @@ enum valeur_carte{
     Dame=12,
     Roi=13
 };
+
 enum choix_joueur{
     Hit=1,
     Stand=2,
@@ -73,7 +77,7 @@ void afficher_carte(struct carte c){
 }
 struct joueur{
     /// structure pour la main des joueurs ainsi que leur montant 
-    struct deck deck;
+    struct deck main;
     int montant;
     
 };
@@ -104,6 +108,17 @@ struct deck creer_deck(){
     return deck;
 }
 
+
+void initialisation(void){
+    struct joueur banque = {{{0,0}},0};
+    struct joueur joueur = {{{0,0}},0};
+    creer_deck();
+}
+
+struct carte tirage_carte(struct deck deck){
+    int random = rand()%52;
+    return deck.liste[random];
+
 struct carte tirage_carte(struct deck deck){
     int random = rand()%52;
     struct carte carte_tiree = deck.liste[random];
@@ -111,6 +126,7 @@ struct carte tirage_carte(struct deck deck){
     deck.liste[random].couleur = 0;
 
     return carte_tiree;
+
 }
 
 void menu_joueur(){
@@ -130,11 +146,18 @@ void menu_joueur(){
     }
 }
 int main() {
+
+    struct joueur joueur1;
+    struct deck deck1 = creer_deck();
+    joueur1.deck = deck1;
+
+
     //struct joueur joueur1;
     //struct deck deck1 = creer_deck();
     //joueur1.deck = deck1;
     /*for (int i=0;i<(sizeof(D.liste)/sizeof(D.liste));i++){
         afficher_carte(D.liste[i]);*/
+
 
     return 0;
 }
