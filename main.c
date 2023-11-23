@@ -144,6 +144,9 @@ void menu_joueur(){
         if(choix >= 1 && choix <= 4){
             ok = 1;
         }
+        else{
+            printf("merci de choisir un chiffre en entre 1 et 4! \n");
+        }
     }
 }
 int main() {
