@@ -114,7 +114,7 @@ void initialisation(void){
 struct carte tirage_carte(struct deck deck){
     int random = rand()%52;
     return deck.liste[random];
-
+}
 struct carte tirage_carte(struct deck deck){
     int random = rand()%52;
     struct carte carte_tiree = deck.liste[random];
@@ -143,53 +143,57 @@ void menu_joueur(){
 }
 
 void valeur_main(struct joueur joueur){
-    if (joueur.deck.carte.valeur_carte == As){
-        joueur.montant += 1;
+    int deck[]= creer_deck();
+    int taille = sizeof(deck[]);
+    for (int = 0; i<taille; i++){
+        if (joueur.deck.carte.valeur_carte == As){
+            joueur.montant += 1;
+        }
+        else if (joueur.deck.carte.valeur_carte == Deux){
+            joueur.montant += 2;
+        }
+        else if (joueur.deck.carte.valeur_carte == Trois){
+            joueur.montant += 3;
+        }
+        else if (joueur.deck.carte.valeur_carte == Quatre){
+            joueur.montant += 4;
+        }
+        else if (joueur.deck.carte.valeur_carte == Cinq){
+            joueur.montant += 5;
+        }
+        else if (joueur.deck.carte.valeur_carte == Six){
+            joueur.montant += 6;
+        }
+        else if (joueur.deck.carte.valeur_carte == Sept){
+            joueur.montant += 7;
+        }
+        else if (joueur.deck.carte.valeur_carte == Huit){
+            joueur.montant += 8;
+        }
+        else if (joueur.deck.carte.valeur_carte == Neuf){
+            joueur.montant += 9;
+        }
+        else if (joueur.deck.carte.valeur_carte == Dix){
+            joueur.montant += 10;
+        }
+        else if (joueur.deck.carte.valeur_carte ==  Valet){
+            joueur.montant += 11;
+        }
+        else if (joueur.deck.carte.valeur_carte == Dame){
+            joueur.montant += 12;
+        }
+        else if (joueur.deck.carte.valeur_carte == Roi){
+            joueur.montant += 13;
+        }
     }
-    else if (joueur.deck.carte.valeur_carte == Deux){
-        joueur.montant += 2;
-    }
-    else if (joueur.deck.carte.valeur_carte == Trois){
-        joueur.montant += 3;
-    }
-    else if (joueur.deck.carte.valeur_carte == Quatre){
-        joueur.montant += 4;
-    }
-    else if (joueur.deck.carte.valeur_carte == Cinq){
-        joueur.montant += 5;
-    }
-    else if (joueur.deck.carte.valeur_carte == Six){
-        joueur.montant += 6;
-    }
-    else if (joueur.deck.carte.valeur_carte == Sept){
-        joueur.montant += 7;
-    }
-    else if (joueur.deck.carte.valeur_carte == Huit){
-        joueur.montant += 8;
-    }
-    else if (joueur.deck.carte.valeur_carte == Neuf){
-        joueur.montant += 9;
-    }
-    else if (joueur.deck.carte.valeur_carte == Dix){
-        joueur.montant += 10;
-    }
-    else if (joueur.deck.carte.valeur_carte ==  Valet){
-        joueur.montant += 11;
-    }
-    else if (joueur.deck.carte.valeur_carte == Dame){
-        joueur.montant += 12;
-    }
-    else if (joueur.deck.carte.valeur_carte == Roi){
-        joueur.montant += 13;
-    }
-    
+    printf("le montant de la main du joueur est %d", joueur.montant);
 }
 
 int main() {
 
     struct joueur joueur1;
     struct deck deck1 = creer_deck();
-    joueur1.deck = deck1;
+    //joueur1.deck = deck1;
 
 
     //struct joueur joueur1;
