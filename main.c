@@ -75,7 +75,7 @@ void afficher_carte(struct carte c){
 }
 struct joueur{
     /// structure pour la main des joueurs ainsi que leur montant 
-    struct deck deck;
+    struct deck main;
     int montant;
     
 };
@@ -115,6 +115,18 @@ struct deck creer_deck(){
     return deck;
 }
 
+
+void initialisation(void){
+    // creaction de la main vide de la banque et du joueur
+    struct joueur banque = {{{0,0}},0};
+    struct joueur joueur = {{{0,0}},0};
+    creer_deck();
+}
+
+struct carte tirage_carte(struct deck deck){
+    int random = rand()%52;
+    return deck.liste[random];
+
 struct carte tirage_carte(struct deck deck){
     int random = rand()%52;
     struct carte carte_tiree = deck.liste[random];
@@ -122,6 +134,7 @@ struct carte tirage_carte(struct deck deck){
     deck.liste[random].couleur = 0;
 
     return carte_tiree;
+
 }
 
 void menu_joueur(){
@@ -138,33 +151,26 @@ void menu_joueur(){
         if(choix >= 1 && choix <= 4){
             ok = 1;
         }
+        else{
+            printf("merci de choisir un chiffre en entre 1 et 4! \n");
+        }
     }
 }
 
 
 int main() {
-    struct deck deck;
-    struct carte carte1 = {As,Carreau};
-    struct carte carte2 = {Deux,Carreau};
-    struct carte carte3 = {Trois,Carreau};
-    struct carte carte4 = {Quatre,Carreau};
-    struct carte carte5 = {Cinq,Carreau};
 
-    deck.liste = malloc(sizeof(struct carte)*52);
+    struct joueur joueur1;
+    struct deck deck1 = creer_deck();
+    joueur1.deck = deck1;
 
-    /*deck.liste[0] = carte1;
-    deck.liste[1] = carte2;
-    deck.liste[2] = carte3;
-    deck.liste[3] = carte4;
-    deck.liste[4] = carte5;*/
-    deck = creer_deck();
 
-    for(int i = 0; i < 5;i++){
-        afficher_carte(deck.liste[i]);
-        printf("\n");
-    }
+    //struct joueur joueur1;
+    //struct deck deck1 = creer_deck();
+    //joueur1.deck = deck1;
+    /*for (int i=0;i<(sizeof(D.liste)/sizeof(D.liste));i++){
+        afficher_carte(D.liste[i]);*/
 
-    afficher_carte(carte1);
 
     return 0;
 }
