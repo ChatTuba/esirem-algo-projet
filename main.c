@@ -209,6 +209,35 @@ int menu_joueur(){
     }
     return choix;
 }
+void jeu(){
+
+    int mise =10;
+    int credit =1000;
+    char choix;
+    int ok=0;
+    while (!ok){
+        // vérification de l'entrée user
+        scanf("Voulez vous lancer une partie?(coût 10 crédits) (o/n)\n",choix);
+        if (choix != 'o'&& choix !='n'){
+            ok = 0;
+        }
+        else{
+            ok =1;
+        }
+    }
+        if (choix=='n'){
+             printf("fin du jeu!\n");
+            return 0;
+        }
+        else if(choix =='o'){
+            printf("début de la partie");
+            creer_deck();
+            int selection = menu_joueur();
+            if (selection == 1){
+
+            }
+        }
+}
 
 
 int main(){
