@@ -24,3 +24,18 @@ fonction menu joueur:
 
 
 <img width="405" alt="image" src="https://github.com/ChatTuba/esirem-algo-projet/assets/104895734/684d7052-6933-4b20-b8ff-3f9c49caaf89">
+
+algorithme fonction afficher_carte
+
+<img width="231" alt="image" src="https://github.com/ChatTuba/esirem-algo-projet/assets/144101139/ee7f66eb-a4b6-4800-be45-687d1fc1a8c6">
+
+algorithme fonction afficher_main
+
+<img width="251" alt="image" src="https://github.com/ChatTuba/esirem-algo-projet/assets/144101139/a6bd1309-2595-45d9-a8e1-238d2240cbb4">
+
+
+algorithme fonction creer_deck(pour creer et melanger le deck de 52 cartes)
+
+<img width="326" alt="image" src="https://github.com/ChatTuba/esirem-algo-projet/assets/144101139/2b25c47e-07dc-469f-ac20-864db39dd328">
+
+
