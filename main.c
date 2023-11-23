@@ -209,6 +209,7 @@ int menu_joueur(){
     }
     return choix;
 }
+
 void jeu(){
 
     int mise =10;
@@ -219,24 +220,34 @@ void jeu(){
         // vérification de l'entrée user
         scanf("Voulez vous lancer une partie?(coût 10 crédits) (o/n)\n",choix);
         if (choix != 'o'&& choix !='n'){
+            printf("Il faut entrer o ou n !\n");
             ok = 0;
         }
         else{
             ok =1;
         }
     }
-        if (choix=='n'){
-             printf("fin du jeu!\n");
-            return 0;
+    if (choix=='n'){
+        printf("fin du jeu!\n");
+        return 0;
+    }
+    //début du jeu
+    else if(choix =='o'){
+        credit -= mise;
+        if (credit <0){
+            // vérification qu'il y'a assez de crédit
+            printf("Vous n'avez plus assez de crédits!\n");
         }
-        else if(choix =='o'){
-            printf("début de la partie");
-            creer_deck();
-            int selection = menu_joueur();
-            if (selection == 1){
+        printf("il vous reste désormais %d crédits!",credit);
+        printf("début de la partie");
+        struct carte deck = *creer_deck();
+        struct carte carte1 = tirage_carte(&deck);
 
-            }
-        }
+        int selection = menu_joueur();
+    if (selection == 1){
+
+    }
+    }
 }
 
 
