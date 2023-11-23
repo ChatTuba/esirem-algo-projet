@@ -18,3 +18,9 @@ structures:
 
 
 <img width="242" alt="image" src="https://github.com/ChatTuba/esirem-algo-projet/assets/104895734/55c55805-ab10-44f1-b24d-0aa1003ba152">
+
+
+fonction menu joueur:
+
+
+<img width="405" alt="image" src="https://github.com/ChatTuba/esirem-algo-projet/assets/104895734/684d7052-6933-4b20-b8ff-3f9c49caaf89">
