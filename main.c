@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 enum couleurs {
     Carreau=1,
     Coeur=2,
     Trefle=3,
     Pique=4
 };
+
 enum valeur_carte{
     As=1,
     Deux=2,
@@ -21,6 +23,7 @@ enum valeur_carte{
     Dame=12,
     Roi=13
 };
+
 enum choix_joueur{
     Hit=1,
     Stand=2,
@@ -38,10 +41,9 @@ struct carte{
 //struct carte huitT={Huit,Trefle};
 
 struct deck{
-    struct carte *liste;
+    struct carte carte_actuelle;
+    struct deck *next;
 };
-
-
 
 //struct deck deck12 = {&DC, &RP, &huitT}; issou
 
@@ -82,25 +84,34 @@ struct joueur{
 
 struct deck creer_deck(){
     struct deck deck;
-    int compteur_couleur = 0;
-    for(int i = 0;i < 52;i++){
-        if(i%13+1 == 1){
-            // Sachant que la couleur est comrpise entre 1 et 4, on incrémente
+    struct carte carte_temporaire;
+
+    int compteur_couleur = 1;
+
+    carte_temporaire.valeur = 1;
+    carte_temporaire.couleur = 1;
+
+    deck.carte_actuelle = carte_temporaire;
+    struct deck deck_temporaire;
+
+    for(int i = 1;i <= 52;i++) {
+        if (i % 13 + 1 == 1) {
+            printf("boucle couleur\n");
+            // Sachant que la couleur est comprise entre 1 et 4, on incrémente
             // le compteur de couleur à chaque fois que l'on a 13 cartes de la même couleur, c'est à dire
             // à chaque fois que i%13+1 == 1.
             compteur_couleur++;
         }
-        deck.liste[i].valeur = i%13+1;
-        deck.liste[i].couleur = compteur_couleur;
-    }
-    // On mélange le deck
-    for(int i = 0;i < 52;i++){
-        int random = rand()%52;
-        struct carte carte_temp = deck.liste[i];
-        deck.liste[i] = deck.liste[random];
-        deck.liste[random] = carte_temp;
-    }
+        int valeur = i % 13 + 1;
 
+        carte_temporaire.valeur = valeur;
+        carte_temporaire.couleur = compteur_couleur;
+
+        deck_temporaire.carte_actuelle = carte_temporaire;
+
+        deck.next = &deck_temporaire;
+        deck = deck_temporaire;
+    }
     return deck;
 }
 
@@ -129,12 +140,31 @@ void menu_joueur(){
         }
     }
 }
+
+
 int main() {
-    //struct joueur joueur1;
-    //struct deck deck1 = creer_deck();
-    //joueur1.deck = deck1;
-    /*for (int i=0;i<(sizeof(D.liste)/sizeof(D.liste));i++){
-        afficher_carte(D.liste[i]);*/
+    struct deck deck;
+    struct carte carte1 = {As,Carreau};
+    struct carte carte2 = {Deux,Carreau};
+    struct carte carte3 = {Trois,Carreau};
+    struct carte carte4 = {Quatre,Carreau};
+    struct carte carte5 = {Cinq,Carreau};
+
+    deck.liste = malloc(sizeof(struct carte)*52);
+
+    /*deck.liste[0] = carte1;
+    deck.liste[1] = carte2;
+    deck.liste[2] = carte3;
+    deck.liste[3] = carte4;
+    deck.liste[4] = carte5;*/
+    deck = creer_deck();
+
+    for(int i = 0; i < 5;i++){
+        afficher_carte(deck.liste[i]);
+        printf("\n");
+    }
+
+    afficher_carte(carte1);
 
     return 0;
 }
