@@ -73,6 +73,7 @@ void afficher_carte(struct carte c){
         printf("%s","Pique");
     }
 }
+
 struct joueur{
     /// structure pour la main des joueurs ainsi que leur montant 
     struct deck main;
@@ -163,6 +164,16 @@ void initialisation(void){
     creer_deck();
 }
 
+int comptage_main(struct deck* d){
+    int s=0
+    struct deck* current=d;
+    while(current!=NULL){// parcours la main(liste chainee) et ajoute a la somme totale la valeur de la carte actuelle
+        s+=current->d.valeur;
+        current=current->next;
+    }
+}
+
+
 struct carte tirage_carte(struct carte *deck){
     struct carte carte_tiree;
     for(int i = 52; i >= 0; i++){
@@ -200,6 +211,7 @@ void menu_joueur(){
 
 
 int main(){
+
     struct carte *deck = creer_deck();
     struct carte carte_tiree = tirage_carte(deck);
     afficher_carte(carte_tiree);
