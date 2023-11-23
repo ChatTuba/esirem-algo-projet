@@ -45,7 +45,7 @@ struct deck{
     struct deck *next;
 };
 
-//struct deck deck12 = {&DC, &RP, &huitT}; issou
+//struct deck deck12 = {&DC, &RP, &huitT};
 
 void afficher_carte(struct carte c){
     if (c.valeur<=10){
@@ -137,6 +137,19 @@ struct deck creer_deck(){
     return deck;
 }
 
+int comptage_main(struct deck* d){
+    int s=0;
+    struct deck* current=d;
+    while(current!=NULL){
+        if (current.carte_actuelle.valeur<=10){
+            s=s+current->carte_actuelle.valeur;
+        }
+        else{
+            s=s+current->carte_actuelle.valeur;
+        }
+    }
+    return s;
+}
 
 void initialisation(void){
     // creaction de la main vide de la banque et du joueur
@@ -161,7 +174,6 @@ struct carte tirage_carte(struct deck deck){
 
 
     return carte_tiree;
-
 }
 
 void menu_joueur(){
@@ -183,9 +195,6 @@ void menu_joueur(){
         }
     }
 }
-
-
 int main(){
-
     return 0;
 }
