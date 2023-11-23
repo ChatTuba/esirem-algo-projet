@@ -73,6 +73,7 @@ void afficher_carte(struct carte c){
         printf("%s","Pique");
     }
 }
+
 struct joueur{
     /// structure pour la main des joueurs ainsi que leur montant 
     struct deck main;
