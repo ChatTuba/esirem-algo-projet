@@ -112,6 +112,27 @@ struct deck creer_deck(){
         deck.next = &deck_temporaire;
         deck = deck_temporaire;
     }
+
+    struct carte tableau_de_cartes[52];
+    struct deck *tableau_d_adresses[52];
+
+    for(int i = 0;i < 52;i++){
+        tableau_de_cartes[i] = deck.carte_actuelle;
+        tableau_d_adresses[i] = deck.next;
+        deck = *deck.next;
+    }
+    for(int i = 0;i < 52;i++){
+        int random = rand()%52;
+
+        struct deck *temp = tableau_d_adresses[i];
+        tableau_d_adresses[i] = tableau_d_adresses[random];
+        tableau_d_adresses[random] = temp;
+    }
+    for(int i = 0;i < 52;i++){
+        deck.next = tableau_d_adresses[i];
+        deck.carte_actuelle = tableau_de_cartes[i];
+        deck = *deck.next;
+    }
     return deck;
 }
 
@@ -125,13 +146,18 @@ void initialisation(void){
 
 struct carte tirage_carte(struct deck deck){
     int random = rand()%52;
-    return deck.liste[random];
+    struct carte tableau_de_cartes[52];
+    struct deck *tableau_d_adresses[52];
 
-struct carte tirage_carte(struct deck deck){
-    int random = rand()%52;
-    struct carte carte_tiree = deck.liste[random];
-    deck.liste[random].valeur = 0;
-    deck.liste[random].couleur = 0;
+    for(int i = 0;i < 52;i++){
+        tableau_de_cartes[i] = deck.carte_actuelle;
+        tableau_d_adresses[i] = deck.next;
+        deck = *deck.next;
+    struct carte carte_tiree = tableau_de_cartes[random];
+    tableau_de_cartes[random].valeur = 0;
+    tableau_de_cartes[random].couleur = 0;
+
+
 
     return carte_tiree;
 
@@ -158,19 +184,7 @@ void menu_joueur(){
 }
 
 
-int main() {
-
-    struct joueur joueur1;
-    struct deck deck1 = creer_deck();
-    joueur1.deck = deck1;
-
-
-    //struct joueur joueur1;
-    //struct deck deck1 = creer_deck();
-    //joueur1.deck = deck1;
-    /*for (int i=0;i<(sizeof(D.liste)/sizeof(D.liste));i++){
-        afficher_carte(D.liste[i]);*/
-
+int main(){
 
     return 0;
 }
