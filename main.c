@@ -189,16 +189,16 @@ struct carte tirage_carte(struct carte *deck){
     return carte_tiree;
 }
 
-void menu_joueur(){
+int menu_joueur(){
     int ok = 0;
-
+    int choix;
     while(!ok){
         printf("1. Hit\n");
         printf("2. Stand\n");
         printf("3. Double\n");
         printf("4. Surrend\n");
         printf("Votre choix : ");
-        int choix;
+        
         scanf("%d",&choix);
         if(choix >= 1 && choix <= 4){
             ok = 1;
@@ -207,6 +207,7 @@ void menu_joueur(){
             printf("merci de choisir un chiffre en entre 1 et 4! \n");
         }
     }
+    return choix;
 }
 
 
