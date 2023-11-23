@@ -145,6 +145,15 @@ void initialisation(void){
     creer_deck();
 }
 
+int comptage_main(struct deck* d){
+    int s=0
+    struct deck* current=d;
+    while(current!=NULL){// parcours la main(liste chainee) et ajoute a la somme totale la valeur de la carte actuelle
+        s+=current->d.valeur;
+        current=current->next;
+    }
+}
+
 struct carte tirage_carte(struct deck deck){
     int random = rand()%52;
     struct carte tableau_de_cartes[52];
@@ -157,8 +166,6 @@ struct carte tirage_carte(struct deck deck){
     struct carte carte_tiree = tableau_de_cartes[random];
     tableau_de_cartes[random].valeur = 0;
     tableau_de_cartes[random].couleur = 0;
-
-
 
     return carte_tiree;
 
@@ -186,6 +193,5 @@ void menu_joueur(){
 
 
 int main(){
-
     return 0;
 }
