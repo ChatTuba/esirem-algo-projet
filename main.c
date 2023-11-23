@@ -83,9 +83,10 @@ struct joueur{
 
 
 
-struct deck creer_deck(){
+struct carte *creer_deck(){
     struct deck deck;
     struct carte carte_temporaire;
+    struct deck *deck_actuel = &deck;
 
     int compteur_couleur = 1;
 
@@ -96,8 +97,7 @@ struct deck creer_deck(){
     struct deck deck_temporaire;
 
     for(int i = 1;i <= 52;i++) {
-        if (i % 13 + 1 == 1) {
-            printf("boucle couleur\n");
+        if (i % 13 + 1 == 1 && i  != 52) {
             // Sachant que la couleur est comprise entre 1 et 4, on incrémente
             // le compteur de couleur à chaque fois que l'on a 13 cartes de la même couleur, c'est à dire
             // à chaque fois que i%13+1 == 1.
@@ -111,17 +111,29 @@ struct deck creer_deck(){
         deck_temporaire.carte_actuelle = carte_temporaire;
 
         deck.next = &deck_temporaire;
-        deck = deck_temporaire;
+        deck_temporaire = deck;
     }
 
     struct carte tableau_de_cartes[52];
     struct deck *tableau_d_adresses[52];
+    afficher_carte(tableau_de_cartes[45]);
 
     for(int i = 0;i < 52;i++){
         tableau_de_cartes[i] = deck.carte_actuelle;
-        tableau_d_adresses[i] = deck.next;
-        deck = *deck.next;
+        tableau_d_adresses[i] = &deck;
+        afficher_carte(tableau_de_cartes[i]);
+
+        if (deck_actuel->next != NULL) {
+            deck_actuel = (*deck_actuel).next;
+        } else {
+            printf("next est nul\n");
+            break;  // Sortir de la boucle si le prochain élément est NULL
+        }
     }
+
+    printf("OK");
+
+
     for(int i = 0;i < 52;i++){
         int random = rand()%52;
 
@@ -129,12 +141,19 @@ struct deck creer_deck(){
         tableau_d_adresses[i] = tableau_d_adresses[random];
         tableau_d_adresses[random] = temp;
     }
+    printf("OK");
     for(int i = 0;i < 52;i++){
         deck.next = tableau_d_adresses[i];
         deck.carte_actuelle = tableau_de_cartes[i];
         deck = *deck.next;
     }
-    return deck;
+    printf("OK");
+    for(int i = 0;i < 52;i++){
+        tableau_de_cartes[i] = deck.carte_actuelle;
+        //deck = *deck.next;
+    }
+    printf("FIN");
+    return tableau_de_cartes;
 }
 
 
@@ -154,21 +173,20 @@ int comptage_main(struct deck* d){
     }
 }
 
-struct carte tirage_carte(struct deck deck){
-    int random = rand()%52;
-    struct carte tableau_de_cartes[52];
-    struct deck *tableau_d_adresses[52];
 
-    for(int i = 0;i < 52;i++){
-        tableau_de_cartes[i] = deck.carte_actuelle;
-        tableau_d_adresses[i] = deck.next;
-        deck = *deck.next;
-    struct carte carte_tiree = tableau_de_cartes[random];
-    tableau_de_cartes[random].valeur = 0;
-    tableau_de_cartes[random].couleur = 0;
-
+struct carte tirage_carte(struct carte *deck){
+    struct carte carte_tiree;
+    for(int i = 52; i >= 0; i++){
+        if(deck[i].couleur != 0){
+            carte_tiree = deck[i];
+            deck[i].valeur = 0;
+            deck[i].couleur = 0;
+        }
+        else{
+            printf("Il n'y a plus de carte dans le deck\n");
+        }
+    }
     return carte_tiree;
-
 }
 
 void menu_joueur(){
@@ -193,5 +211,9 @@ void menu_joueur(){
 
 
 int main(){
+
+    struct carte *deck = creer_deck();
+    struct carte carte_tiree = tirage_carte(deck);
+    afficher_carte(carte_tiree);
     return 0;
 }
